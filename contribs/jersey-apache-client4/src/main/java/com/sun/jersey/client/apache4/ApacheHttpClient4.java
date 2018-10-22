@@ -40,6 +40,7 @@
 
 package com.sun.jersey.client.apache4;
 
+import java.net.ProxySelector;
 import java.net.URI;
 import java.util.Map;
 import java.util.logging.Level;
@@ -56,6 +57,7 @@ import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.conn.params.ConnRoutePNames;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.ProxySelectorRoutePlanner;
 import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
@@ -237,6 +239,8 @@ public class ApacheHttpClient4 extends Client {
                 (ClientConnectionManager)connectionManager,
                 (HttpParams)httpParams
         );
+		client.setRoutePlanner(new ProxySelectorRoutePlanner(
+				client.getConnectionManager().getSchemeRegistry(), ProxySelector.getDefault()));
 
         CookieStore cookieStore = null;
         boolean preemptiveBasicAuth = false;
