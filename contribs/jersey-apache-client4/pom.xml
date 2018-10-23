@@ -49,7 +49,7 @@
         <version>1.19.3</version>
     </parent>
     <artifactId>jersey-apache-client4</artifactId>
-    <version>1.19.3.EBJWC</version>
+    <version>1.19.3.EBJWC.SR1</version>
     <packaging>jar</packaging>
     <name>Jersey Apache HTTP Client 4.x</name>
     <profiles>
