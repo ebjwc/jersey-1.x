@@ -57,9 +57,6 @@ import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.conn.params.ConnRoutePNames;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.ProxySelectorRoutePlanner;
-import org.apache.http.params.CoreConnectionPNames;
-import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 
 import com.sun.jersey.api.client.Client;
@@ -239,7 +236,7 @@ public class ApacheHttpClient4 extends Client {
                 (ClientConnectionManager)connectionManager,
                 (HttpParams)httpParams
         );
-		client.setRoutePlanner(new ProxySelectorRoutePlanner(
+		client.setRoutePlanner(new DaivbProxySelectorRoutePlanner(
 				client.getConnectionManager().getSchemeRegistry(), ProxySelector.getDefault()));
 
         CookieStore cookieStore = null;
@@ -297,4 +294,8 @@ public class ApacheHttpClient4 extends Client {
                     ") property MUST be an instance of String or URI");
         }
     }
+    
+    public static void main(String[] args) {
+		"".concat(null);
+	}
 }
